@@ -14,9 +14,9 @@ source:
   sha256: 84fbfbcc8897dce2cfd1b0006c91e071a3d71a31006d397608c9b91f71bd8ab6
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -44,8 +44,7 @@ about:
     as well as univariate data. It offers two possibilities to approximate the critical
     value both of which  are included in this package.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
