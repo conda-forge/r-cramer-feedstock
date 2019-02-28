@@ -1,4 +1,4 @@
-{% set version = '0.9-1' %}
+{% set version = '0.9-3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,16 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: cramer_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/cramer_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/cramer/cramer_{{ version }}.tar.gz
-  sha256: 84fbfbcc8897dce2cfd1b0006c91e071a3d71a31006d397608c9b91f71bd8ab6
+  sha256: 057fe0e661f034b6c3c1cb23dfb8ba534c4a994dde3d8104d12cc2662d6aaacd
 
 build:
-  noarch: generic
   merge_build_host: True  # [win]
-  number: 1001
+  number: 0
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -41,16 +40,25 @@ about:
   license: GPL (>= 2)
   summary: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test
     on equality of the underlying distributions can be applied to  multivariate data
-    as well as univariate data. It offers two possibilities to approximate the critical
+    as well as univariate data. It offers two  possibilities to approximate the critical
     value both of which  are included in this package.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
+
+# Package: cramer
+# Version: 0.9-3
+# Date: 2019-01-05
+# Title: Multivariate Nonparametric Cramer-Test for the Two-Sample-Problem
+# Author: Carsten Franz <carsten.franz@gmail.com>
+# Maintainer: Carsten Franz <carsten.franz@gmail.com>
+# Depends: R (>= 0.65), boot
+# Description: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test on equality of the underlying distributions can be applied to  multivariate data as well as univariate data. It offers two  possibilities to approximate the critical value both of which  are included in this package.
+# License: GPL (>= 2)
+# Repository: CRAN
+# NeedsCompilation: no
+# Packaged: 2019-01-05 10:08:06 UTC; carsten
+# Date/Publication: 2019-01-05 10:20:03 UTC
