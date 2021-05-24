@@ -37,7 +37,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=cramer
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test
     on equality of the underlying distributions can be applied to  multivariate data
     as well as univariate data. It offers two  possibilities to approximate the critical
