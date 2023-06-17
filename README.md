@@ -1,11 +1,11 @@
-About r-cramer
-==============
+About r-cramer-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cramer-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=cramer
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cramer-feedstock/blob/main/LICENSE.txt)
 
 Summary: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test on equality of the underlying distributions can be applied to  multivariate data as well as univariate data. It offers two  possibilities to approximate the critical value both of which  are included in this package.
 
