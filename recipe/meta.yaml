@@ -15,20 +15,32 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
-  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-boot                       # [build_platform != target_platform]
+    - r-rcpp                       # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-boot
+    - r-rcpp >=1.0.12
   run:
     - r-base
     - r-boot
+    - r-rcpp >=1.0.12
 
 test:
   commands:
@@ -40,22 +52,10 @@ about:
   license: GPL-2.0-or-later
   summary: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test on equality of the underlying distributions can be applied to  multivariate data as well as univariate data. It offers two  possibilities to approximate the critical value both of which  are included in this package.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-
-# Package: cramer
-# Version: 0.9-3
-# Date: 2019-01-05
-# Title: Multivariate Nonparametric Cramer-Test for the Two-Sample-Problem
-# Author: Carsten Franz <carsten.franz@gmail.com>
-# Maintainer: Carsten Franz <carsten.franz@gmail.com>
-# Depends: R (>= 0.65), boot
-# Description: Provides R routine for the so called two-sample Cramer-Test.  This nonparametric two-sample-test on equality of the underlying distributions can be applied to  multivariate data as well as univariate data. It offers two  possibilities to approximate the critical value both of which  are included in this package.
-# License: GPL (>= 2)
-# Repository: CRAN
-# NeedsCompilation: no
-# Packaged: 2019-01-05 10:08:06 UTC; carsten
-# Date/Publication: 2019-01-05 10:20:03 UTC
