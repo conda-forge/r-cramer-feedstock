@@ -41,6 +41,7 @@ requirements:
     - r-base
     - r-boot
     - r-rcpp >=1.0.12
+    - {{ native }}gcc-libs         # [win]
 
 test:
   commands:
